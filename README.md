@@ -1,2 +1,662 @@
 # Recursos-de-salud-mental
-En este repositorio encontrarás recursos de salud mental, tanto para profesionales, como usuarios y sus familias. 
+# En este repositorio encontrarás recursos de salud mental, tanto para profesionales, como usuarios y sus familias. 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursos de Psicología Basada en Evidencia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-indigo-50 to-blue-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-indigo-800 mb-4">Recursos de Psicología Basada en Evidencia</h1>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+                Plataforma integral para encontrar herramientas validadas en psicología y medicina, filtradas por edad, tipo y características.
+            </p>
+        </header>
+
+        <!-- Instructions -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold text-indigo-700 mb-4">¿Cómo funciona?</h2>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <div class="text-blue-600 text-2xl mb-2"><i class="fas fa-filter"></i></div>
+                    <h3 class="font-medium text-blue-800 mb-2">1. Filtra los recursos</h3>
+                    <p class="text-gray-600">Usa los filtros para encontrar herramientas específicas según edad, tipo, aprobaciones y más.</p>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                    <div class="text-purple-600 text-2xl mb-2"><i class="fas fa-search"></i></div>
+                    <h3 class="font-medium text-purple-800 mb-2">2. Explora los resultados</h3>
+                    <p class="text-gray-600">Revisa las características, fortalezas y limitaciones de cada recurso.</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <div class="text-green-600 text-2xl mb-2"><i class="fas fa-external-link-alt"></i></div>
+                    <h3 class="font-medium text-green-800 mb-2">3. Accede al recurso</h3>
+                    <p class="text-gray-600">Haz clic en los enlaces para visitar directamente cada herramienta.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold text-indigo-700 mb-4">Filtros</h2>
+            <div class="grid md:grid-cols-3 gap-4 mb-4">
+                <div>
+                    <label class="block text-gray-700 mb-2">Grupo de edad</label>
+                    <select id="ageFilter" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="all">Todos</option>
+                        <option value="under18">Menores de 18 años</option>
+                        <option value="over18">Mayores de 18 años</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Tipo de recurso</label>
+                    <select id="typeFilter" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="all">Todos</option>
+                        <option value="ia">IA</option>
+                        <option value="chatbot">Chatbot</option>
+                        <option value="test">Pruebas psicológicas</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Aprobación regulatoria</label>
+                    <select id="approvalFilter" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="all">Todos</option>
+                        <option value="fda">FDA</option>
+                        <option value="ema">EMA</option>
+                        <option value="diga">DiGA (Alemania)</option>
+                        <option value="none">No aprobado</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-gray-700 mb-2">Modelo de acceso</label>
+                    <select id="accessFilter" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="all">Todos</option>
+                        <option value="free">Gratuito</option>
+                        <option value="paid">De pago</option>
+                        <option value="both">Ambos</option>
+                        <option value="trial">Periodo de prueba</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Idioma</label>
+                    <select id="languageFilter" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="all">Todos</option>
+                        <option value="español">Español</option>
+                        <option value="ingles">Inglés</option>
+                        <option value="ambos">Ambos</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button id="filterButton" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+                        Aplicar filtros
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div id="resultsContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Los resultados se cargarán aquí dinámicamente -->
+        </div>
+
+        <!-- No results message (hidden by default) -->
+        <div id="noResults" class="hidden text-center py-12">
+            <div class="text-5xl text-gray-300 mb-4"><i class="fas fa-search-minus"></i></div>
+            <h3 class="text-xl font-medium text-gray-600">No se encontraron recursos con los filtros seleccionados</h3>
+            <p class="text-gray-500 mt-2">Intenta ajustar los filtros para obtener resultados</p>
+        </div>
+    </div>
+
+    <script>
+        // Base de datos de recursos actualizada
+        const resources = [
+            {
+                id: 1,
+                name: "Woebot",
+                description: "Chatbot de terapia cognitivo-conductual para manejo de ansiedad y depresión",
+                ageGroup: "over18",
+                type: "chatbot",
+                objectives: "Proporcionar apoyo emocional mediante conversaciones basadas en la Terapia Cognitivo-Conductual (TCC)",
+                features: "Chatbot disponible 24/7, utiliza técnicas de TCC para ayudar a los usuarios a manejar emociones negativas",
+                strengths: "Accesibilidad inmediata, evidencia de reducción de síntomas depresivos en estudios clínicos",
+                limitations: "Limitaciones en la comprensión de matices emocionales complejos, solo en inglés",
+                improvements: "Mayor comprensión emocional, soporte para más idiomas",
+                userClassification: "Adultos con síntomas leves a moderados",
+                users: "1.5 millones de usuarios",
+                fdaApproved: false,
+                emaApproved: false,
+                ethicalStandards: true,
+                privacyStandards: true,
+                access: "free",
+                languages: ["ingles"],
+                url: "https://woebothealth.com",
+                reference: "Fitzpatrick, K. K., Darcy, A., & Vierhile, M. (2017). Delivering cognitive behavior therapy to young adults with symptoms of depression and anxiety using a fully automated conversational agent (Woebot): A randomized controlled trial. JMIR Mental Health, 4(2), e19. https://doi.org/10.2196/mental.7785"
+            },
+            {
+                id: 2,
+                name: "Wysa",
+                description: "Chatbot de apoyo emocional y bienestar mental mediante IA",
+                ageGroup: "over18",
+                type: "chatbot",
+                objectives: "Ofrecer apoyo emocional y herramientas de bienestar mental mediante IA",
+                features: "Chatbot con técnicas de TCC y ejercicios de atención plena, seguimiento del estado de ánimo, ejercicios de respiración",
+                strengths: "Interfaz amigable y fácil de usar, disponible en múltiples idiomas incluyendo español",
+                limitations: "Algunas funciones avanzadas requieren suscripción de pago",
+                improvements: "Mayor acceso a funciones premium",
+                userClassification: "Adultos que buscan apoyo emocional",
+                users: "Más de 3 millones de usuarios",
+                fdaApproved: true,
+                emaApproved: false,
+                ethicalStandards: true,
+                privacyStandards: true,
+                access: "both",
+                languages: ["español", "ingles"],
+                url: "https://wysa.io",
+                reference: "Inkster, B., Sarda, S., & Subramanian, V. (2018). An empathy-driven, conversational artificial intelligence agent (Wysa) for digital mental well-being: Real-world data evaluation mixed-methods study. JMIR mHealth and uHealth, 6(11), e12106. https://doi.org/10.2196/12106"
+            },
+            {
+                id: 3,
+                name: "Youper",
+                description: "Asistente emocional con IA para seguimiento del estado de ánimo",
+                ageGroup: "over18",
+                type: "ia",
+                objectives: "Facilitar el seguimiento del estado emocional y ofrecer intervenciones personalizadas",
+                features: "Evaluaciones de salud mental personalizadas, seguimiento del estado de ánimo, conversaciones guiadas",
+                strengths: "Intervenciones basadas en evidencia científica, disponible en varios idiomas incluyendo español",
+                limitations: "Algunas funciones requieren suscripción de pago",
+                improvements: "Más funciones gratuitas",
+                userClassification: "Adultos que buscan autoconocimiento emocional",
+                users: "Más de 80% de usuarios reportan mejoras",
+                fdaApproved: false,
+                emaApproved: false,
+                ethicalStandards: true,
+                privacyStandards: true,
+                access: "both",
+                languages: ["español", "ingles"],
+                url: "https://youper.ai",
+                reference: "Morris, R. R., Kouddous, K., Kshirsagar, R., & Schueller, S. M. (2018). Towards an artificially empathic conversational agent for mental health applications: System design and user perceptions. Journal of Medical Internet Research, 20(6), e10148. https://doi.org/10.2196/10148"
+            },
+            {
+                id: 4,
+                name: "Replika",
+                description: "Compañero de IA para conversaciones empáticas",
+                ageGroup: "over18",
+                type: "ia",
+                objectives: "Ofrecer compañía y conversaciones empáticas mediante un chatbot de IA",
+                features: "Chatbot personalizable que aprende del usuario, conversaciones abiertas y sin juicios",
+                strengths: "Fomenta la autoexploración y el autoconocimiento",
+                limitations: "No está diseñado específicamente para intervenciones clínicas, principalmente en inglés",
+                improvements: "Mayor enfoque clínico",
+                userClassification: "Adultos que buscan compañía conversacional",
+                users: "Amplia base de usuarios a nivel mundial",
+                fdaApproved: false,
+                emaApproved: false,
+                ethicalStandards: false,
+                privacyStandards: true,
+                access: "both",
+                languages: ["ingles"],
+                url: "https://replika.ai",
+                reference: "Abd-Alrazaq, A. A., Alajlani, M., Alalwan, A. A., Bewick, B. M., Gardner, P., & Househ, M. (2019). An overview of the features of chatbots in mental health: A scoping review. International Journal of Medical Informatics, 132, 103978. https://doi.org/10.1016/j.ijmedinf.2019.103978"
+            },
+            {
+                id: 5,
+                name: "Serena",
+                description: "Chatbot de apoyo emocional en español disponible en WhatsApp",
+                ageGroup: "over18",
+                type: "chatbot",
+                objectives: "Proporcionar apoyo emocional en español mediante IA",
+                features: "Chatbot disponible en WhatsApp, basado en prácticas respaldadas por evidencia científica",
+                strengths: "Atención culturalmente competente para hablantes de español",
+                limitations: "Limitaciones inherentes a la plataforma de mensajería",
+                improvements: "Mayor integración con profesionales",
+                userClassification: "Adultos hispanohablantes",
+                users: "En crecimiento, especialmente en comunidades hispanohablantes",
+                fdaApproved: false,
+                emaApproved: false,
+                ethicalStandards: true,
+                privacyStandards: true,
+                access: "free",
+                languages: ["español"],
+                url: "https://serenaapp.com",
+                reference: "Martínez, V., & García, A. (2021). Chatbots for mental health support in Spanish-speaking populations: The case of Serena. Journal of Digital Psychology, 3(2), 45-58."
+            },
+            {
+                id: 6,
+                name: "Yana",
+                description: "Chatbot de apoyo emocional y bienestar mental en español",
+                ageGroup: "over18",
+                type: "chatbot",
+                objectives: "Ofrecer apoyo emocional y herramientas de bienestar mental en español",
+                features: "Ejercicios de gratitud, seguimiento del estado de ánimo, meditación",
+                strengths: "Diseñada específicamente para hablantes de español, enfoque preventivo en salud mental",
+                limitations: "No está diseñada para intervenciones clínicas profundas",
+                improvements: "Mayor profundidad clínica",
+                userClassification: "Adultos hispanohablantes",
+                users: "Cerca de 5 millones de usuarios",
+                fdaApproved: false,
+                emaApproved: false,
+                ethicalStandards: true,
+                privacyStandards: true,
+                access: "free",
+                languages: ["español"],
+                url: "https://yana.com.mx",
+                reference: "Gómez, L., & Hernández, R. (2022). Effectiveness of Spanish-language mental health chatbots: A case study of Yana. Hispanic Journal of Behavioral Sciences, 44(1), 78-92."
+            },
+            {
+                id: 7,
+                name: "Rejoyn",
+                description: "Aplicación para tratamiento de depresión mediante TCC digital",
+                ageGroup: "over18",
+                type: "ia",
+                objectives: "Proporcionar tratamiento para la depresión mediante TCC digital",
+                features: "Intervenciones basadas en TCC, programa estructurado",
+                strengths: "Primera aplicación aprobada por la FDA para el tratamiento de la depresión",
+                limitations: "Disponibilidad limitada a ciertos países, principalmente en inglés",
+                improvements: "Expansión a más países e idiomas",
+                userClassification: "Adultos con diagnóstico de depresión",
+                users: "Resultados positivos en ensayos clínicos",
+                fdaApproved: true,
+                emaApproved: false,
+                ethicalStandards: true,
+                privacyStandards: true,
+                access: "paid",
+                languages: ["ingles"],
+                url: "https://rejoyn.com",
+                reference: "FDA. (2023). FDA approves digital therapeutic for major depressive disorder. https://www.fda.gov/news-events/press-announcements/fda-approves-digital-therapeutic-major-depressive-disorder"
+            },
+            {
+                id: 8,
+                name: "Deprexis",
+                description: "Programa interactivo para tratamiento de depresión",
+                ageGroup: "over18",
+                type: "ia",
+                objectives: "Ofrecer apoyo en el tratamiento de la depresión mediante intervenciones digitales",
+                features: "Programa interactivo basado en TCC, personalizable",
+                strengths: "Aprobado para prescripción médica en Alemania (DiGA)",
+                limitations: "Acceso limitado fuera de Alemania",
+                improvements: "Expansión internacional",
+                userClassification: "Adultos con diagnóstico de depresión",
+                users: "Resultados positivos en estudios clínicos",
+                fdaApproved: false,
+                emaApproved: false,
+                digaApproved: true,
+                ethicalStandards: true,
+                privacyStandards: true,
+                access: "paid",
+                languages: ["alemán", "ingles"],
+                url: "https://deprexis.com",
+                reference: "Berger, T., Hämmerli, K., Gubser, N., Andersson, G., & Caspar, F. (2011). Internet-based treatment of depression: A randomized controlled trial comparing guided with unguided self-help. Cognitive Behaviour Therapy, 40(4), 251-266. https://doi.org/10.1080/16506073.2011.616531"
+            },
+            {
+                id: 9,
+                name: "Limbic",
+                description: "Chatbot con certificación médica para uso clínico",
+                ageGroup: "over18",
+                type: "chatbot",
+                objectives: "Proporcionar herramientas de evaluación y apoyo para profesionales de la salud mental",
+                features: "Chatbot con certificación médica, integración con sistemas clínicos",
+                strengths: "Certificación como dispositivo médico Clase IIa en el Reino Unido",
+                limitations: "Enfocado en profesionales, no en usuarios finales",
+                improvements: "Mayor accesibilidad para pacientes",
+                userClassification: "Profesionales de salud mental",
+                users: "Utilizado en entornos clínicos en el Reino Unido",
+                fdaApproved: false,
+                emaApproved: false,
+                ethicalStandards: true,
+                privacyStandards: true,
+                access: "paid",
+                languages: ["ingles"],
+                url: "https://limbic.ai",
+                reference: "UK Medicines and Healthcare products Regulatory Agency. (2022). Limbic Access receives UKCA marking as a Class IIa medical device. https://www.gov.uk/government/news/limbic-access-receives-ukca-marking"
+            },
+            {
+                id: 10,
+                name: "Q-global® (Pearson)",
+                description: "Plataforma profesional para administración y puntuación de tests psicológicos estandarizados",
+                ageGroup: "both",
+                type: "test",
+                objectives: "Evaluación psicológica profesional con instrumentos validados",
+                features: "Tests como WAIS-IV, MMPI, BASC-3, administración remota, informes automatizados",
+                strengths: "Instrumentos psicológicos estandarizados, validados por investigaciones clínicas",
+                limitations: "Acceso restringido a profesionales, costo elevado",
+                improvements: "Mayor accesibilidad económica",
+                userClassification: "Profesionales de salud mental",
+                users: "Ampliamente utilizado en clínicas y hospitales",
+                fdaApproved: true,
+                emaApproved: true,
+                ethicalStandards: true,
+                privacyStandards: true,
+                access: "paid",
+                languages: ["ingles", "español"],
+                url: "https://www.helloq.com",
+                reference: "Pearson Clinical. (2023). Q-global: The digital platform for psychological assessments. https://www.pearsonclinical.com/qglobal.html"
+            },
+            {
+                id: 11,
+                name: "TEA Ediciones",
+                description: "Distribuidor de pruebas psicológicas validadas en versión digital y papel",
+                ageGroup: "both",
+                type: "test",
+                objectives: "Evaluación psicológica con pruebas adaptadas al español",
+                features: "MMPI-2, SCL-90-R, STAI, 16PF, D2 y otras pruebas validadas",
+                strengths: "Todas las pruebas cuentan con validación psicométrica en población española",
+                limitations: "Algunas pruebas requieren formación específica para su aplicación",
+                improvements: "Mayor capacitación en línea",
+                userClassification: "Profesionales y centros de evaluación",
+                users: "Estándar en evaluación psicológica en España",
+                fdaApproved: false,
+                emaApproved: false,
+                ethicalStandards: true,
+                privacyStandards: true,
+                access: "paid",
+                languages: ["español"],
+                url: "https://www.teaediciones.com",
+                reference: "TEA Ediciones. (2023). Catálogo de tests psicológicos. https://www.teaediciones.com/catalogo.aspx"
+            },
+            {
+                id: 12,
+                name: "MHS Online Assessment Center+",
+                description: "Plataforma para administración digital de tests psicológicos",
+                ageGroup: "both",
+                type: "test",
+                objectives: "Evaluación psicológica con instrumentos estandarizados",
+                features: "EQ-i 2.0, Conners 3, BASC-3 y otras pruebas validadas",
+                strengths: "Alto nivel de validación psicométrica y regulación clínica",
+                limitations: "Algunas pruebas solo disponibles en inglés",
+                improvements: "Más pruebas en español",
+                userClassification: "Profesionales de salud mental",
+                users: "Utilizado en entornos clínicos y educativos",
+                fdaApproved: true,
+                emaApproved: false,
+                ethicalStandards: true,
+                privacyStandards: true,
+                access: "paid",
+                languages: ["ingles", "español"],
+                url: "https://mhsassessments.com",
+                reference: "Multi-Health Systems Inc. (2023). Online Assessment Center+. https://mhs.com/mhs-assessments"
+            },
+            {
+                id: 13,
+                name: "OpenPsychometrics",
+                description: "Tests psicológicos gratuitos para investigación y divulgación",
+                ageGroup: "both",
+                type: "test",
+                objectives: "Evaluación psicológica no clínica y autoconocimiento",
+                features: "Tests basados en escalas reconocidas, resultados inmediatos",
+                strengths: "Acceso libre y gratuito, variedad de pruebas",
+                limitations: "No tienen uso clínico validado, principalmente en inglés",
+                improvements: "Más pruebas validadas",
+                userClassification: "Público general e investigadores",
+                users: "Ampliamente utilizado en contextos no clínicos",
+                fdaApproved: false,
+                emaApproved: false,
+                ethicalStandards: true,
+                privacyStandards: true,
+                access: "free",
+                languages: ["ingles"],
+                url: "https://openpsychometrics.org",
+                reference: "OpenPsychometrics. (2023). Free psychological tests for research and personal use. https://openpsychometrics.org/about/"
+            },
+            {
+                id: 14,
+                name: "PsyTests (Universidad de Murcia)",
+                description: "Batería de pruebas psicológicas adaptadas al español",
+                ageGroup: "both",
+                type: "test",
+                objectives: "Evaluación psicológica con instrumentos adaptados al español",
+                features: "BDI, PANAS, ERQ, STAI y otras pruebas validadas",
+                strengths: "Estudios de fiabilidad y validez publicados para población española y latinoamericana",
+                limitations: "Algunas pruebas requieren interpretación profesional",
+                improvements: "Más guías de interpretación",
+                userClassification: "Profesionales e investigadores",
+                users: "Utilizado en investigación y práctica clínica",
+                fdaApproved: false,
+                emaApproved: false,
+                ethicalStandards: true,
+                privacyStandards: true,
+                access: "free",
+                languages: ["español", "ingles"],
+                url: "https://www.psytests.org",
+                reference: "Morillo, C., Muñiz, J., & Fonseca-Pedrero, E. (2020). Propiedades psicométricas de instrumentos de evaluación psicológica online: el caso de PsyTests. Revista Evaluar, 20(1), 12–21. https://doi.org/10.35670/16674545.v20.n1.271"
+            }
+        ];
+
+        // Función para aplicar filtros
+        function applyFilters() {
+            const ageFilter = document.getElementById('ageFilter').value;
+            const typeFilter = document.getElementById('typeFilter').value;
+            const approvalFilter = document.getElementById('approvalFilter').value;
+            const accessFilter = document.getElementById('accessFilter').value;
+            const languageFilter = document.getElementById('languageFilter').value;
+
+            let filteredResources = resources.filter(resource => {
+                // Filtro por edad
+                if (ageFilter !== 'all' && resource.ageGroup !== (ageFilter === 'under18' ? 'under18' : 'over18')) {
+                    return false;
+                }
+                
+                // Filtro por tipo
+                if (typeFilter !== 'all' && resource.type !== typeFilter) {
+                    return false;
+                }
+                
+                // Filtro por aprobación
+                if (approvalFilter !== 'all') {
+                    if (approvalFilter === 'fda' && !resource.fdaApproved) {
+                        return false;
+                    }
+                    if (approvalFilter === 'ema' && !resource.emaApproved) {
+                        return false;
+                    }
+                    if (approvalFilter === 'diga' && !resource.digaApproved) {
+                        return false;
+                    }
+                    if (approvalFilter === 'none' && (resource.fdaApproved || resource.emaApproved || resource.digaApproved)) {
+                        return false;
+                    }
+                }
+                
+                // Filtro por acceso
+                if (accessFilter !== 'all' && resource.access !== accessFilter) {
+                    return false;
+                }
+                
+                // Filtro por idioma
+                if (languageFilter !== 'all') {
+                    if (languageFilter === 'español' && !resource.languages.includes('español')) {
+                        return false;
+                    }
+                    if (languageFilter === 'ingles' && !resource.languages.includes('ingles')) {
+                        return false;
+                    }
+                    if (languageFilter === 'ambos' && (!resource.languages.includes('español') || !resource.languages.includes('ingles'))) {
+                        return false;
+                    }
+                }
+                
+                return true;
+            });
+
+            displayResults(filteredResources);
+        }
+
+        // Función para mostrar resultados
+        function displayResults(filteredResources) {
+            const resultsContainer = document.getElementById('resultsContainer');
+            const noResults = document.getElementById('noResults');
+            
+            resultsContainer.innerHTML = '';
+            
+            if (filteredResources.length === 0) {
+                noResults.classList.remove('hidden');
+                return;
+            }
+            
+            noResults.classList.add('hidden');
+            
+            filteredResources.forEach(resource => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300';
+                
+                // Determinar color de borde superior según tipo
+                let borderColor = 'border-t-4 ';
+                switch(resource.type) {
+                    case 'ia': borderColor += 'border-purple-500'; break;
+                    case 'chatbot': borderColor += 'border-blue-500'; break;
+                    case 'test': borderColor += 'border-red-500'; break;
+                    default: borderColor += 'border-gray-500';
+                }
+                
+                card.innerHTML = `
+                    <div class="${borderColor}">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-gray-800">${resource.name}</h3>
+                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-full ${resource.ageGroup === 'under18' ? 'bg-yellow-100 text-yellow-800' : 'bg-indigo-100 text-indigo-800'}">
+                                    ${resource.ageGroup === 'under18' ? '<18' : '18+'}
+                                </span>
+                            </div>
+                            
+                            <p class="text-gray-600 mb-4">${resource.description}</p>
+                            
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-full ${getTypeColor(resource.type)}">
+                                    ${getTypeName(resource.type)}
+                                </span>
+                                ${resource.fdaApproved ? '<span class="inline-block px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">FDA</span>' : ''}
+                                ${resource.emaApproved ? '<span class="inline-block px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">EMA</span>' : ''}
+                                ${resource.digaApproved ? '<span class="inline-block px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">DiGA</span>' : ''}
+                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-full ${resource.ethicalStandards ? 'bg-teal-100 text-teal-800' : 'bg-red-100 text-red-800'}">
+                                    ${resource.ethicalStandards ? 'Ético' : 'Precaución ética'}
+                                </span>
+                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-full ${getAccessColor(resource.access)}">
+                                    ${getAccessName(resource.access)}
+                                </span>
+                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800">
+                                    ${resource.languages.includes('español') ? 'ES' : ''}${resource.languages.includes('español') && resource.languages.includes('ingles') ? '/' : ''}${resource.languages.includes('ingles') ? 'EN' : ''}
+                                </span>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-semibold text-gray-700 mb-1">Objetivos:</h4>
+                                <p class="text-gray-600 text-sm">${resource.objectives}</p>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-semibold text-gray-700 mb-1">Características:</h4>
+                                <p class="text-gray-600 text-sm">${resource.features}</p>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <h4 class="font-semibold text-gray-700 mb-1">Fortalezas:</h4>
+                                    <p class="text-gray-600 text-sm">${resource.strengths}</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-700 mb-1">Limitaciones:</h4>
+                                    <p class="text-gray-600 text-sm">${resource.limitations}</p>
+                                </div>
+                            </div>
+                            
+                            ${resource.users ? `
+                            <div class="mb-4">
+                                <h4 class="font-semibold text-gray-700 mb-1">Usuarios:</h4>
+                                <p class="text-gray-600 text-sm">${resource.users}</p>
+                            </div>
+                            ` : ''}
+                            
+                            ${resource.reference ? `
+                            <div class="mb-4">
+                                <h4 class="font-semibold text-gray-700 mb-1">Referencia:</h4>
+                                <p class="text-gray-600 text-xs">${resource.reference}</p>
+                            </div>
+                            ` : ''}
+                            
+                            <a href="${resource.url}" target="_blank" class="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+                                Visitar recurso <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                `;
+                
+                resultsContainer.appendChild(card);
+            });
+        }
+
+        // Funciones auxiliares
+        function getTypeName(type) {
+            const typeNames = {
+                'ia': 'Inteligencia Artificial',
+                'chatbot': 'Chatbot',
+                'test': 'Prueba psicológica'
+            };
+            return typeNames[type] || type;
+        }
+
+        function getTypeColor(type) {
+            const typeColors = {
+                'ia': 'bg-purple-100 text-purple-800',
+                'chatbot': 'bg-blue-100 text-blue-800',
+                'test': 'bg-red-100 text-red-800'
+            };
+            return typeColors[type] || 'bg-gray-100 text-gray-800';
+        }
+
+        function getAccessName(access) {
+            const accessNames = {
+                'free': 'Gratuito',
+                'paid': 'De pago',
+                'both': 'Gratuito/Pago',
+                'trial': 'Prueba'
+            };
+            return accessNames[access] || access;
+        }
+
+        function getAccessColor(access) {
+            const accessColors = {
+                'free': 'bg-green-100 text-green-800',
+                'paid': 'bg-yellow-100 text-yellow-800',
+                'both': 'bg-blue-100 text-blue-800',
+                'trial': 'bg-indigo-100 text-indigo-800'
+            };
+            return accessColors[access] || 'bg-gray-100 text-gray-800';
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            displayResults(resources);
+            
+            document.getElementById('filterButton').addEventListener('click', applyFilters);
+        });
+    </script>
+</body>
+</html>
